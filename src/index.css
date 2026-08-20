@@ -35,9 +35,17 @@
   clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
+.hero-image-edge {
+  right: min(0px, calc((1340px - 100vw) / 2));
+}
+
 @media (max-width: 1024px) {
   .hero-diagonal-split {
     clip-path: none;
+  }
+
+  .hero-image-edge {
+    right: 0;
   }
 }
 

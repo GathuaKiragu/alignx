@@ -66,7 +66,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenConsultation }) 
         </div>
 
         {/* Right Side: Architectural Executive Visual with Slanted Angle */}
-        <div className="w-full lg:w-[47%] lg:absolute lg:right-0 lg:top-0 lg:bottom-0 h-[360px] sm:h-[420px] lg:h-full overflow-hidden flex items-stretch">
+        <div className="hero-image-edge w-full lg:w-[47%] lg:absolute lg:top-0 lg:bottom-0 h-[360px] sm:h-[420px] lg:h-full overflow-hidden flex items-stretch">
           <div className="relative w-full h-full hero-diagonal-split overflow-hidden">
             <img src={heroImage} alt="AlignX Consulting executive office" className="absolute inset-0 h-full w-full object-cover object-center" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#00261F]/85 via-[#00261F]/25 to-transparent pointer-events-none" />
