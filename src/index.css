@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary-dark: #00332A;
+    --color-primary-deeper: #00261F;
+    --color-primary-card: #002D25;
+    --color-gold: #C99A3D;
+    --color-gold-light: #E0BA6A;
+    --color-gold-dark: #A57823;
+    --color-cream: #F7F3EA;
+    --color-cream-card: #FFFFFF;
+    --color-text-dark: #22332D;
+    --color-text-muted: #5C6E67;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-dark);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-heading {
+    font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .font-brand {
+    font-family: 'Cinzel', 'Playfair Display', serif;
+  }
+}
+
+/* Custom Utilities */
+.hero-diagonal-split {
+  clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+@media (max-width: 1024px) {
+  .hero-diagonal-split {
+    clip-path: none;
+  }
+}
+
+/* Gold Gradient Text & Backgrounds */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #DFB967 0%, #C99A3D 50%, #B38327 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #E2BF6F 0%, #C99A3D 60%, #B6862B 100%);
+}
+
+.bg-gold-gradient:hover {
+  background: linear-gradient(135deg, #ECD088 0%, #D8A94C 60%, #C79539 100%);
+}
+
+.bg-gold-glow {
+  box-shadow: 0 0 35px rgba(201, 154, 61, 0.25);
+}
+
+.border-gold-subtle {
+  border-color: rgba(201, 154, 61, 0.35);
+}
+
+/* Smooth micro-interactions */
+.gold-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gold-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(0, 51, 42, 0.08), 0 0 0 1px rgba(201, 154, 61, 0.45);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #00261F;
+}
+::-webkit-scrollbar-thumb {
+  background: #C99A3D;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #DFB967;
+}
