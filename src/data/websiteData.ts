@@ -59,23 +59,23 @@ export const servicesData: ServiceItem[] = [
 
 export const statsData: StatItem[] = [
   {
-    value: '100+',
+    value: '90+',
     label: 'Projects\nDelivered',
     iconName: 'network'
   },
   {
     value: '98%',
-    label: 'Client Satisfaction\nRate',
+    label: 'Client\nSatisfaction',
     iconName: 'chart'
   },
   {
-    value: '15+',
+    value: '10+',
     label: 'Industries\nServed',
     iconName: 'globe'
   },
   {
-    value: '10+',
-    label: 'Years of\nExcellence',
+    value: '25+',
+    label: 'Years of\nExperience',
     iconName: 'trophy'
   }
 ];

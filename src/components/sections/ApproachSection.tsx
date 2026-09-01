@@ -70,11 +70,11 @@ const ProcessIcon: React.FC<{ type: ProcessStepItem['iconName'] }> = ({ type }) 
 
 export const ApproachSection: React.FC = () => {
   return (
-    <section id="approach" className="bg-[#00332A] py-18 sm:py-24 text-white relative overflow-hidden">
+    <section id="approach" className="bg-[#00332A] py-14 sm:py-18 lg:py-20 text-white relative overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#002720] via-[#00332A] to-[#00261F] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">

@@ -13,10 +13,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenConsultation }) 
       <div className="absolute inset-0 bg-gradient-to-r from-[#00261F] via-[#00332A] to-[#002E26] pointer-events-none" />
 
       {/* Grid wrapper for Left Content & Right Diagonal Office Visual */}
-      <div className="relative w-full max-w-[1340px] mx-auto px-6 sm:px-8 lg:px-12 flex flex-col lg:flex-row items-stretch z-10 lg:min-h-[580px]">
+      <div className="relative w-full max-w-[1340px] mx-auto px-6 sm:px-8 lg:px-10 flex flex-col lg:flex-row items-stretch z-10 lg:min-h-[580px]">
         
         {/* Left Side: Typography & CTAs */}
-        <div className="w-full lg:w-1/2 py-10 sm:py-14 lg:py-16 xl:py-20 lg:pr-8 text-left z-20 flex flex-col justify-center">
+        <div className="w-full lg:w-[48%] py-8 sm:py-10 lg:py-12 lg:pr-6 text-left z-20 flex flex-col justify-center">
           
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-4">
@@ -27,9 +27,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenConsultation }) 
           </div>
 
           {/* Main Editorial Serif Heading */}
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-[54px] xl:text-[60px] font-normal text-white leading-[1.12] tracking-tight mb-3">
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-[52px] xl:text-[58px] font-normal text-white leading-[1.14] tracking-tight mb-3">
             Beyond Consulting. <br />
-            <span className="text-[#C99A3D] font-serif italic font-normal">We Execute.</span>
+            <span className="text-[#C99A3D] font-serif italic font-normal inline-block pr-2">We Execute.</span>
           </h1>
 
           {/* Decorative Diamond Line */}
@@ -40,7 +40,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenConsultation }) 
           </div>
 
           {/* Subheading / Description */}
-          <p className="text-white/80 text-xs sm:text-[13.5px] leading-relaxed max-w-lg font-normal mb-8 text-slate-200">
+          <p className="text-white/85 text-xs sm:text-[13.5px] leading-relaxed max-w-lg font-normal mb-8 text-slate-200">
             AlignX Consulting Limited is an execution-led transformation partner that converts vision and strategy into measurable outcomes across projects, people, technology, and operations.
           </p>
 
@@ -65,11 +65,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenConsultation }) 
           </div>
         </div>
 
-        {/* Right Side: Architectural Executive Visual with Slanted Angle */}
-        <div className="w-full lg:w-1/2 h-[360px] sm:h-[420px] lg:h-auto overflow-hidden flex items-stretch">
-          <div className="relative w-full h-full hero-diagonal-split overflow-hidden">
-            <img src={heroImage} alt="AlignX Consulting executive office" className="absolute inset-0 h-full w-full object-cover object-center" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00261F]/85 via-[#00261F]/25 to-transparent pointer-events-none" />
+        {/* Right Side: Architectural Executive Visual with Slanted Angle and full wall logo visible */}
+        <div className="w-full lg:w-[52%] h-[380px] sm:h-[440px] lg:h-auto overflow-hidden flex items-stretch">
+          <div className="relative w-full h-full hero-diagonal-split overflow-hidden rounded-r-lg lg:rounded-none">
+            <img 
+              src={heroImage} 
+              alt="AlignX Consulting executive office wall with logo" 
+              className="absolute inset-0 h-full w-full object-cover object-[82%_center] lg:object-[84%_center]" 
+            />
+            {/* Soft left gradient fade for seamless text integration */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#00261F]/90 via-[#00261F]/30 to-transparent pointer-events-none" />
             <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-[1.5px] bg-gradient-to-b from-[#DFB559] via-[#C99A3D]/60 to-transparent pointer-events-none transform -skew-x-[11deg] origin-top opacity-50" />
           </div>
         </div>

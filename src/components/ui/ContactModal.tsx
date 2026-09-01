@@ -63,21 +63,21 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             </span>
             <h2 className="font-serif text-2xl text-white mb-1">Contact AlignX</h2>
             <p className="text-white/70 text-xs mb-6">
-              Connect with our Lagos office or send a direct inquiry to our leadership.
+              Connect with our Nairobi office or send a direct inquiry to our leadership.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 p-3 bg-[#001E18] rounded-lg border border-white/5 text-xs">
               <div className="flex items-center gap-2 text-white/80">
                 <Phone className="w-4 h-4 text-[#C99A3D] shrink-0" />
-                <span className="truncate">+234 800 123 4567</span>
+                <span className="truncate">+254 792 097 347</span>
               </div>
               <div className="flex items-center gap-2 text-white/80">
                 <Mail className="w-4 h-4 text-[#C99A3D] shrink-0" />
-                <span className="truncate">hello@alignx...</span>
+                <span className="truncate">alignx07@gmail.com</span>
               </div>
               <div className="flex items-center gap-2 text-white/80">
                 <MapPin className="w-4 h-4 text-[#C99A3D] shrink-0" />
-                <span>Lagos, Nigeria</span>
+                <span>Nairobi, Kenya</span>
               </div>
             </div>
 

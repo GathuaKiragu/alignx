@@ -62,8 +62,8 @@ interface AboutSectionProps {
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenConsultation }) => {
   return (
-    <section id="about" className="bg-[#F7F3EA] py-16 sm:py-20 lg:py-24 border-t border-[#EAE3D2]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    <section id="about" className="bg-[#F7F3EA] py-12 sm:py-16 lg:py-20 border-t border-[#EAE3D2]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           
           {/* Left Column: Narrative & CTA */}

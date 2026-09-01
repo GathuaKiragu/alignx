@@ -133,8 +133,8 @@ const ServiceIcon: React.FC<{ type: ServiceItem['iconName'] }> = ({ type }) => {
 
 export const ServicesSection: React.FC = () => {
   return (
-    <section id="services" className="bg-[#F7F3EA] py-16 sm:py-20 lg:py-24 border-t border-[#EAE3D2]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    <section id="services" className="bg-[#F7F3EA] py-12 sm:py-16 lg:py-20 border-t border-[#EAE3D2]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">

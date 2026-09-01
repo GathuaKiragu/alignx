@@ -24,11 +24,11 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
   return (
-    <footer className="bg-[#00221B] text-white pt-16 pb-8 border-t border-[#C99A3D]/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    <footer className="bg-[#00221B] text-white pt-12 pb-6 border-t border-[#C99A3D]/20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         
         {/* Main Footer 4-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 pb-10">
           
           {/* Col 1: Brand & Socials (4 cols) */}
           <div className="lg:col-span-4 flex flex-col items-start">
@@ -113,15 +113,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             <div className="space-y-2.5 text-xs text-white/75">
               <div className="flex items-center gap-2.5">
                 <Phone className="w-3.5 h-3.5 text-[#C99A3D] shrink-0" />
-                <a href="tel:+2348001234567" className="hover:text-[#C99A3D] transition-colors">+234 800 123 4567</a>
+                <a href="tel:+254792097347" className="hover:text-[#C99A3D] transition-colors">+254 792 097 347</a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-3.5 h-3.5 text-[#C99A3D] shrink-0" />
-                <a href="mailto:hello@alignxconsulting.com" className="hover:text-[#C99A3D] transition-colors truncate">hello@alignxconsulting.com</a>
+                <a href="mailto:alignx07@gmail.com" className="hover:text-[#C99A3D] transition-colors truncate">alignx07@gmail.com</a>
               </div>
-              <div className="flex items-center gap-2.5">
-                <MapPin className="w-3.5 h-3.5 text-[#C99A3D] shrink-0" />
-                <span>Lagos, Nigeria</span>
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-3.5 h-3.5 text-[#C99A3D] shrink-0 mt-0.5" />
+                <div className="leading-tight">
+                  <span>P O Box 52682-00100</span><br />
+                  <span>Nairobi, Kenya</span>
+                </div>
               </div>
             </div>
 

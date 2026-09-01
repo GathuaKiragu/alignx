@@ -7,8 +7,8 @@ interface FinalCTASectionProps {
 
 export const FinalCTASection: React.FC<FinalCTASectionProps> = ({ onOpenConsultation }) => {
   return (
-    <section className="bg-[#F7F3EA] py-10 sm:py-12 border-y border-[#EAE3D2]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
+    <section className="bg-[#F7F3EA] py-8 sm:py-10 border-y border-[#EAE3D2]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Left Side: Calendar Badge & Copy */}
         <div className="flex items-center gap-4 sm:gap-6 text-center md:text-left flex-col md:flex-row">
