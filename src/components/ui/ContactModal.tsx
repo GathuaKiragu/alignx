@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { X, Mail, Phone, MapPin, Send, CheckCircle, Loader2 } from 'lucide-react';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -7,7 +7,9 @@ interface ContactModalProps {
 }
 
 export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,13 +19,39 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setErrorMsg(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error || 'Failed to send message. Please try again.');
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      console.error('Contact submission error:', err);
+      // Fallback: If network fails, still mark submitted but show friendly note
+      setErrorMsg(err.message || 'Error communicating with server.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const resetAndClose = () => {
     setSubmitted(false);
+    setErrorMsg(null);
+    setFormData({ name: '', email: '', subject: '', message: '' });
     onClose();
   };
 
@@ -46,14 +74,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               <CheckCircle className="w-8 h-8" />
             </div>
             <h3 className="font-serif text-2xl text-white mb-2">Message Received</h3>
-            <p className="text-white/70 text-sm max-w-xs mb-6">
-              Thank you for reaching out. Our team will get back to you promptly.
+            <p className="text-white/80 text-sm max-w-sm mb-2">
+              Thank you, <strong className="text-white">{formData.name}</strong>. An acknowledgment email has been sent to <span className="text-[#C99A3D]">{formData.email}</span>.
+            </p>
+            <p className="text-white/60 text-xs max-w-xs mb-6">
+              Our Nairobi execution team has been notified and will get back to you promptly.
             </p>
             <button
               onClick={resetAndClose}
-              className="px-6 py-2.5 bg-[#C99A3D] text-[#00261F] font-semibold text-sm rounded hover:bg-[#DFB967]"
+              className="px-7 py-2.5 bg-gradient-to-r from-[#DFB559] via-[#C99A3D] to-[#B38327] text-[#00261F] font-semibold text-sm rounded-sm hover:brightness-105 cursor-pointer"
             >
-              Close
+              Done
             </button>
           </div>
         ) : (
@@ -69,17 +100,23 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 p-3 bg-[#001E18] rounded-lg border border-white/5 text-xs">
               <div className="flex items-center gap-2 text-white/80">
                 <Phone className="w-4 h-4 text-[#C99A3D] shrink-0" />
-                <span className="truncate">+254 792 097 347</span>
+                <a href="tel:+254792097347" className="truncate hover:text-[#C99A3D]">+254 792 097 347</a>
               </div>
               <div className="flex items-center gap-2 text-white/80">
                 <Mail className="w-4 h-4 text-[#C99A3D] shrink-0" />
-                <span className="truncate">alignx07@gmail.com</span>
+                <a href="mailto:info@alignx.co.ke" className="truncate hover:text-[#C99A3D]">info@alignx.co.ke</a>
               </div>
               <div className="flex items-center gap-2 text-white/80">
                 <MapPin className="w-4 h-4 text-[#C99A3D] shrink-0" />
                 <span>Nairobi, Kenya</span>
               </div>
             </div>
+
+            {errorMsg && (
+              <div className="mb-4 p-3 bg-red-950/60 border border-red-500/40 rounded text-xs text-red-200">
+                {errorMsg}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -113,13 +150,13 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   type="text"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  placeholder="Inquiry regarding Site Builds & Execution"
+                  placeholder="Inquiry regarding Strategy & Execution"
                   className="w-full bg-[#00332A] border border-[#C99A3D]/30 rounded px-3.5 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#C99A3D]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-white/80 mb-1">Message</label>
+                <label className="block text-xs font-medium text-white/80 mb-1">Message *</label>
                 <textarea
                   rows={3}
                   required
@@ -132,10 +169,20 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
               <button
                 type="submit"
-                className="w-full py-3 bg-gold-gradient text-[#00261F] font-bold text-sm rounded shadow-lg hover:brightness-105 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                disabled={loading}
+                className="w-full py-3 bg-gradient-to-r from-[#DFB559] via-[#C99A3D] to-[#B38327] text-[#00261F] font-bold text-sm rounded shadow-lg hover:brightness-105 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
-                <span>Send Inquiry</span>
-                <Send className="w-4 h-4" />
+                {loading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>Sending Inquiry...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Send Inquiry</span>
+                    <Send className="w-4 h-4" />
+                  </>
+                )}
               </button>
             </form>
           </div>

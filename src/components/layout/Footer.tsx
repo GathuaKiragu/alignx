@@ -1,6 +1,7 @@
 import React from 'react';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Globe } from 'lucide-react';
 import { Logo } from './Logo';
+import { servicesData } from '../../data/websiteData';
 
 // Custom precision SVG icons for LinkedIn, WhatsApp & Socials
 const LinkedInIcon: React.FC<{ className?: string }> = ({ className = "w-3.5 h-3.5" }) => (
@@ -24,20 +25,24 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
   return (
-    <footer className="bg-[#00221B] text-white pt-12 pb-6 border-t border-[#C99A3D]/20">
+    <footer id="contact" className="bg-[#00221B] text-white pt-14 pb-8 border-t border-[#C99A3D]/25">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         
         {/* Main Footer 4-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-12">
           
           {/* Col 1: Brand & Socials (4 cols) */}
           <div className="lg:col-span-4 flex flex-col items-start">
-            <div className="mb-6">
+            <div className="mb-5">
               <Logo size="md" />
             </div>
 
+            <p className="text-xs text-white/70 leading-relaxed max-w-sm mb-4">
+              Execution-led transformation partner converting ambitious ideas into sustainable, measurable outcomes.
+            </p>
+
             {/* Social Links */}
-            <div className="flex items-center gap-3 mt-2 pl-4">
+            <div className="flex items-center gap-3 mt-1">
               {/* LinkedIn */}
               <a
                 href="https://linkedin.com"
@@ -51,7 +56,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
 
               {/* WhatsApp */}
               <a
-                href="https://whatsapp.com"
+                href="https://wa.me/254792097347"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="WhatsApp"
@@ -71,53 +76,53 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             </div>
           </div>
 
-          {/* Col 2: Quick Links (2 sub-columns) (3 cols) */}
-          <div className="lg:col-span-3">
+          {/* Col 2: Quick Links (2.5 cols) */}
+          <div className="lg:col-span-2">
             <h4 className="text-xs font-semibold uppercase tracking-wider text-white mb-4">
               Quick Links
             </h4>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-xs text-white/70">
-              <div className="space-y-2.5">
-                <a href="#hero" className="block hover:text-[#C99A3D] transition-colors">Home</a>
-                <a href="#about" className="block hover:text-[#C99A3D] transition-colors">About</a>
-                <a href="#services" className="block hover:text-[#C99A3D] transition-colors">Services</a>
-              </div>
-              <div className="space-y-2.5">
-                <a href="#about" className="block hover:text-[#C99A3D] transition-colors">Industries</a>
-                <a href="#approach" className="block hover:text-[#C99A3D] transition-colors">Insights</a>
-                <button onClick={onOpenContact} className="block text-left hover:text-[#C99A3D] transition-colors cursor-pointer">Contact</button>
-              </div>
-            </div>
-          </div>
-
-          {/* Col 3: Our Services (2.5 cols) */}
-          <div className="lg:col-span-2">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-white mb-4">
-              Our Services
-            </h4>
             <ul className="space-y-2.5 text-xs text-white/70">
-              <li><a href="#services" className="hover:text-[#C99A3D] transition-colors">Projects</a></li>
-              <li><a href="#services" className="hover:text-[#C99A3D] transition-colors">Human Resources</a></li>
-              <li><a href="#services" className="hover:text-[#C99A3D] transition-colors">Site Builds</a></li>
-              <li><a href="#services" className="hover:text-[#C99A3D] transition-colors">Digitisation</a></li>
-              <li><a href="#services" className="hover:text-[#C99A3D] transition-colors">Automation</a></li>
-              <li><a href="#services" className="hover:text-[#C99A3D] transition-colors">Professional Services</a></li>
+              <li><a href="#hero" className="hover:text-[#C99A3D] transition-colors">Home</a></li>
+              <li><a href="#about" className="hover:text-[#C99A3D] transition-colors">About AlignX</a></li>
+              <li><a href="#services" className="hover:text-[#C99A3D] transition-colors">Our Services</a></li>
+              <li><a href="#approach" className="hover:text-[#C99A3D] transition-colors">Delivery Model</a></li>
+              <li><a href="#values" className="hover:text-[#C99A3D] transition-colors">Our Values</a></li>
             </ul>
           </div>
 
-          {/* Col 4: Contact Us (2.5 cols) */}
+          {/* Col 3: Our Services (3 cols) */}
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white mb-4">
+              Core Capabilities
+            </h4>
+            <ul className="space-y-2.5 text-xs text-white/70">
+              {servicesData.slice(0, 6).map((svc) => (
+                <li key={svc.id}>
+                  <a href="#services" className="hover:text-[#C99A3D] transition-colors truncate block">
+                    {svc.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 4: Contact Us (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-xs font-semibold uppercase tracking-wider text-white mb-4">
-              Contact Us
+              Contact Nairobi Office
             </h4>
-            <div className="space-y-2.5 text-xs text-white/75">
+            <div className="space-y-3 text-xs text-white/75">
               <div className="flex items-center gap-2.5">
                 <Phone className="w-3.5 h-3.5 text-[#C99A3D] shrink-0" />
-                <a href="tel:+254792097347" className="hover:text-[#C99A3D] transition-colors">+254 792 097 347</a>
+                <a href="tel:+254792097347" className="hover:text-[#C99A3D] transition-colors font-medium">+254 792 097 347</a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-3.5 h-3.5 text-[#C99A3D] shrink-0" />
-                <a href="mailto:alignx07@gmail.com" className="hover:text-[#C99A3D] transition-colors truncate">alignx07@gmail.com</a>
+                <a href="mailto:info@alignx.co.ke" className="hover:text-[#C99A3D] transition-colors font-medium">info@alignx.co.ke</a>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Globe className="w-3.5 h-3.5 text-[#C99A3D] shrink-0" />
+                <a href="https://www.alignx.co.ke" target="_blank" rel="noreferrer" className="hover:text-[#C99A3D] transition-colors">www.alignx.co.ke</a>
               </div>
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-3.5 h-3.5 text-[#C99A3D] shrink-0 mt-0.5" />
@@ -132,7 +137,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             <div className="pt-2">
               <button
                 onClick={onOpenContact}
-                className="px-6 py-1.5 rounded border border-[#C99A3D] text-[#C99A3D] hover:bg-[#C99A3D] hover:text-[#00221B] text-xs font-medium transition-all duration-300 cursor-pointer"
+                className="px-6 py-1.5 rounded-sm border border-[#C99A3D] text-[#C99A3D] hover:bg-[#C99A3D] hover:text-[#00221B] text-xs font-semibold tracking-wide transition-all duration-300 cursor-pointer shadow-sm"
               >
                 Let's Talk
               </button>
@@ -144,12 +149,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
         {/* Footer Bottom Bar */}
         <div className="pt-6 border-t border-[#C99A3D]/20 flex flex-col sm:flex-row items-center justify-between text-[11px] text-white/60 gap-4">
           <div>
-            © 2025 AlignX Consulting Limited. All Rights Reserved.
+            © {new Date().getFullYear()} AlignX Consulting Limited. All Rights Reserved.
           </div>
           <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-[#C99A3D] transition-colors">Privacy Policy</a>
-            <span className="text-white/30">|</span>
-            <a href="#" className="hover:text-[#C99A3D] transition-colors">Terms of Service</a>
+            <span className="text-white/70 font-serif italic text-xs text-[#C99A3D]">Beyond Consulting. We Execute.</span>
           </div>
         </div>
 

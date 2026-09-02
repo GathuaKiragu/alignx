@@ -1,11 +1,10 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
-import { statsData, StatItem } from '../../data/websiteData';
+import { ArrowRight, Compass, Target, CheckCircle2 } from 'lucide-react';
+import { statsData, StatItem, valuesList } from '../../data/websiteData';
 
 const StatIcon: React.FC<{ type: StatItem['iconName'] }> = ({ type }) => {
   switch (type) {
     case 'network':
-      // 3 People Group / Team network
       return (
         <svg viewBox="0 0 36 36" className="w-8 h-8 stroke-current text-[#C99A3D] mb-3" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="18" cy="10" r="4" />
@@ -18,7 +17,6 @@ const StatIcon: React.FC<{ type: StatItem['iconName'] }> = ({ type }) => {
       );
 
     case 'chart':
-      // Rising Bar Chart with steps
       return (
         <svg viewBox="0 0 36 36" className="w-8 h-8 stroke-current text-[#C99A3D] mb-3" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <rect x="7" y="18" width="5" height="12" rx="1" />
@@ -28,7 +26,6 @@ const StatIcon: React.FC<{ type: StatItem['iconName'] }> = ({ type }) => {
       );
 
     case 'globe':
-      // Wireframe Globe / Latitude Longitude
       return (
         <svg viewBox="0 0 36 36" className="w-8 h-8 stroke-current text-[#C99A3D] mb-3" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="18" cy="18" r="12" />
@@ -40,7 +37,6 @@ const StatIcon: React.FC<{ type: StatItem['iconName'] }> = ({ type }) => {
       );
 
     case 'trophy':
-      // Trophy Cup
       return (
         <svg viewBox="0 0 36 36" className="w-8 h-8 stroke-current text-[#C99A3D] mb-3" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M10 7h16v8c0 4.4-3.6 8-8 8s-8-3.6-8-8V7z" />
@@ -62,40 +58,41 @@ interface AboutSectionProps {
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenConsultation }) => {
   return (
-    <section id="about" className="bg-[#F7F3EA] py-12 sm:py-16 lg:py-20 border-t border-[#EAE3D2]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+    <section id="about" className="bg-[#F7F3EA] py-16 sm:py-20 lg:py-24 border-t border-[#EAE3D2]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 space-y-16">
+        
+        {/* Top Grid: Who We Are & 2x2 Stats */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           
           {/* Left Column: Narrative & CTA */}
           <div className="lg:col-span-6 space-y-6">
-            
-            {/* Eyebrow */}
             <div className="flex items-center gap-3">
               <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#C99A3D]">
-                ABOUT ALIGNX
+                WHO WE ARE
               </span>
               <span className="w-8 h-[1px] bg-[#C99A3D]"></span>
             </div>
 
-            {/* Heading */}
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-normal text-[#1A2E28] leading-[1.18] tracking-tight">
-              We Turn Vision into <br />
-              <span className="text-[#C99A3D] font-serif">Real Outcomes.</span>
+              Strategy is Only Valuable <br />
+              <span className="text-[#C99A3D] font-serif italic">When It Moves.</span>
             </h2>
 
-            {/* Narrative Body */}
             <p className="text-[#4A5D55] text-sm sm:text-[15px] leading-relaxed font-normal pt-1">
-              At AlignX Consulting Limited, we go beyond advice. We partner with organisations to design, build, and execute strategies that create measurable impact. Our strength lies in seamless execution—delivered by experienced professionals, proven systems, and an unwavering commitment to excellence.
+              AlignX Consulting Limited is an execution-focused consulting and transformation company helping organisations, entrepreneurs and investors convert ambitious ideas, strategies and operational challenges into practical, high-quality outcomes.
             </p>
 
-            {/* Button */}
+            <p className="text-[#4A5D55] text-sm sm:text-[15px] leading-relaxed font-normal">
+              We combine advisory thinking with hands-on implementation across projects, people, digital platforms, process improvement and managed operations. Our role is not simply to recommend what should happen — we help make it happen, with clear ownership, disciplined delivery and measurable outcomes.
+            </p>
+
             <div className="pt-2">
               <button
                 onClick={onOpenConsultation}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-sm border border-[#C99A3D] bg-transparent text-[#1A2E28] hover:bg-[#C99A3D] hover:text-[#00261F] font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 shadow-sm cursor-pointer"
               >
-                <span>Learn More About Us</span>
-                <ArrowRight className="w-4 h-4 text-[#C99A3D] group-hover:text-[#00261F]" />
+                <span>Book a Consultation</span>
+                <ArrowRight className="w-4 h-4 text-[#C99A3D]" />
               </button>
             </div>
           </div>
@@ -103,11 +100,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenConsultation }
           {/* Right Column: 2x2 Dark Green Statistics Panel */}
           <div className="lg:col-span-6">
             <div className="bg-[#002720] border border-[#C99A3D]/25 rounded-xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
-              
-              {/* Subtle background ambient radial lighting */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#C99A3D]/10 rounded-full blur-3xl pointer-events-none" />
 
-              {/* 2x2 Grid with subtle quadrant dividers */}
               <div className="grid grid-cols-2 divide-x divide-y divide-[#C99A3D]/20 -m-8 sm:-m-10">
                 {statsData.map((stat, idx) => (
                   <div 
@@ -115,24 +109,71 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenConsultation }
                     className="p-8 sm:p-10 flex flex-col items-center text-center justify-center relative group hover:bg-white/[0.02] transition-colors"
                   >
                     <StatIcon type={stat.iconName} />
-
-                    {/* Stat Number */}
                     <div className="font-serif text-3xl sm:text-4xl font-normal text-white mb-2 tracking-tight">
                       {stat.value}
                     </div>
-
-                    {/* Stat Label */}
                     <div className="text-white/75 text-xs sm:text-[13px] font-normal leading-tight whitespace-pre-line">
                       {stat.label}
                     </div>
                   </div>
                 ))}
               </div>
-
             </div>
           </div>
 
         </div>
+
+        {/* Vision & Mission Row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+          <div className="bg-white/90 border border-[#EAE3D2] rounded-xl p-8 shadow-sm relative overflow-hidden group hover:border-[#C99A3D]/50 transition-colors">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-9 h-9 rounded-full bg-[#00332A] flex items-center justify-center text-[#C99A3D]">
+                <Compass className="w-5 h-5" />
+              </div>
+              <h3 className="font-serif text-xl font-semibold text-[#1A2E28] tracking-wide">
+                Our Vision
+              </h3>
+            </div>
+            <p className="text-[#4A5D55] text-sm leading-relaxed">
+              To be a trusted African transformation partner known for turning ambitious visions and strategies into sustainable, high-quality results.
+            </p>
+          </div>
+
+          <div className="bg-white/90 border border-[#EAE3D2] rounded-xl p-8 shadow-sm relative overflow-hidden group hover:border-[#C99A3D]/50 transition-colors">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-9 h-9 rounded-full bg-[#00332A] flex items-center justify-center text-[#C99A3D]">
+                <Target className="w-5 h-5" />
+              </div>
+              <h3 className="font-serif text-xl font-semibold text-[#1A2E28] tracking-wide">
+                Our Mission
+              </h3>
+            </div>
+            <p className="text-[#4A5D55] text-sm leading-relaxed">
+              To help clients execute better by combining strategy, project discipline, capable people, fit-for-purpose technology and practical operational support.
+            </p>
+          </div>
+        </div>
+
+        {/* Core Values Strip */}
+        <div id="values" className="pt-6 border-t border-[#EAE3D2]">
+          <div className="text-center mb-6">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#C99A3D]">
+              OUR GUIDING VALUES
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6">
+            {valuesList.map((val) => (
+              <div 
+                key={val}
+                className="px-5 py-2.5 rounded-full bg-[#00332A] text-white border border-[#C99A3D]/40 text-xs sm:text-[13px] font-medium tracking-widest flex items-center gap-2 shadow-sm"
+              >
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#C99A3D]" />
+                <span>{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

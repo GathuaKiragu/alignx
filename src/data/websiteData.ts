@@ -2,7 +2,8 @@ export interface ServiceItem {
   id: string;
   title: string;
   description: string;
-  iconName: 'projects' | 'hr' | 'site' | 'digitisation' | 'automation' | 'professional';
+  subfeatures: string[];
+  iconName: 'strategy' | 'pmo' | 'digital' | 'automation' | 'hr' | 'operations' | 'proptech';
 }
 
 export interface StatItem {
@@ -15,45 +16,58 @@ export interface ProcessStepItem {
   step: string;
   title: string;
   description: string;
-  iconName: 'discover' | 'design' | 'execute' | 'measure' | 'transform';
+  iconName: 'discover' | 'design' | 'build' | 'implement' | 'optimise';
 }
 
 export const servicesData: ServiceItem[] = [
   {
     id: '01',
-    title: 'Projects',
-    description: 'End-to-end project delivery that turns plans into tangible results.',
-    iconName: 'projects'
+    title: 'Strategy Execution & Transformation',
+    description: 'Strategy-to-execution roadmaps, transformation programmes, operating-model improvement, and executive governance.',
+    subfeatures: ['Transformation Programmes', 'Operating Model Improvement', 'Executive Governance'],
+    iconName: 'strategy'
   },
   {
     id: '02',
-    title: 'Human Resources',
-    description: 'Talent solutions that empower people and drive performance.',
-    iconName: 'hr'
+    title: 'Project, Programme & PMO Services',
+    description: 'Project & programme leadership, PMO setup, delivery planning, risk management, and executive dashboards.',
+    subfeatures: ['PMO Setup & Leadership', 'Risk & Dependency Management', 'Vendor Coordination'],
+    iconName: 'pmo'
   },
   {
     id: '03',
-    title: 'Site Builds',
-    description: 'Design, build, and deliver spaces that create lasting impact.',
-    iconName: 'site'
+    title: 'Digital Transformation & Platforms',
+    description: 'Corporate and commercial websites, property platforms, CRM/ERP implementation, portals, and workflow digitisation.',
+    subfeatures: ['Commercial Platforms', 'CRM / ERP Integration', 'Management Reporting'],
+    iconName: 'digital'
   },
   {
     id: '04',
-    title: 'Digitisation',
-    description: 'Smart digital solutions that streamline operations and unlock value.',
-    iconName: 'digitisation'
-  },
-  {
-    id: '05',
-    title: 'Automation',
-    description: 'Intelligent automation that increases efficiency and scales growth.',
+    title: 'Process Digitisation & Automation',
+    description: 'Process redesign, automated approvals, notifications, payment & collection workflows, and systems integration.',
+    subfeatures: ['Workflow Automation', 'Collections & Invoicing', 'Systems Integration'],
     iconName: 'automation'
   },
   {
+    id: '05',
+    title: 'Human Resources & Resource Solutions',
+    description: 'Organisation and role design, talent sourcing, recruitment support, supervision, performance and workforce planning.',
+    subfeatures: ['Recruitment Support', 'Performance Management', 'Specialist Sourcing'],
+    iconName: 'hr'
+  },
+  {
     id: '06',
-    title: 'Professional Services',
-    description: 'Expert advisory and support for sustainable business excellence.',
-    iconName: 'professional'
+    title: 'Managed Operations & Business Support',
+    description: 'Operational oversight, KPI management, finance/bookkeeping coordination, vendor management, and continuous improvement.',
+    subfeatures: ['Operational Oversight', 'KPI & Finance Coordination', 'Process Control'],
+    iconName: 'operations'
+  },
+  {
+    id: '07',
+    title: 'Property Technology & Site Builds',
+    description: 'Turnkey padel club construction & activation, digital listings, tenant & lease management, and landlord dashboards.',
+    subfeatures: ['Padel Club Turnkey Builds', 'Lease & Tenant Management', 'Occupancy Dashboards'],
+    iconName: 'proptech'
   }
 ];
 
@@ -84,40 +98,49 @@ export const processStepsData: ProcessStepItem[] = [
   {
     step: '01',
     title: 'Discover',
-    description: 'We understand your vision, challenges, and objectives.',
+    description: 'Understand the objective, pain points, stakeholders, processes, data and constraints.',
     iconName: 'discover'
   },
   {
     step: '02',
     title: 'Design',
-    description: 'We craft tailored strategies and solutions.',
+    description: 'Define the target solution, priorities, operating model and implementation roadmap.',
     iconName: 'design'
   },
   {
     step: '03',
-    title: 'Execute',
-    description: 'We deliver with precision, transparency, and agility.',
-    iconName: 'execute'
+    title: 'Build',
+    description: 'Configure, develop, source resources and establish the workflows required to deliver.',
+    iconName: 'build'
   },
   {
     step: '04',
-    title: 'Measure',
-    description: 'We track performance and ensure measurable impact.',
-    iconName: 'measure'
+    title: 'Implement',
+    description: 'Deploy, migrate, train, communicate and transition the solution into live operations.',
+    iconName: 'implement'
   },
   {
     step: '05',
-    title: 'Transform',
-    description: 'We sustain growth and drive long-term success.',
-    iconName: 'transform'
+    title: 'Operate & Optimise',
+    description: 'Track performance, manage issues and continuously improve operational outcomes.',
+    iconName: 'optimise'
   }
+];
+
+export const valuesList = [
+  'EXECUTION',
+  'EXCELLENCE',
+  'ACCOUNTABILITY',
+  'PARTNERSHIP',
+  'INNOVATION',
+  'INTEGRITY'
 ];
 
 export const navLinks = [
   { label: 'Home', href: '#hero', active: true },
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services', hasDropdown: true },
-  { label: 'Projects', href: '#services' },
-  { label: 'Industries', href: '#about' },
-  { label: 'Insights', href: '#approach' },
+  { label: 'Delivery Model', href: '#approach' },
+  { label: 'Values', href: '#values' },
+  { label: 'Contact', href: '#contact' },
 ];
