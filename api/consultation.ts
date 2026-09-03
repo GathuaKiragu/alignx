@@ -1,4 +1,5 @@
-import { sendConsultationEmails, ConsultationPayload } from '../server/mailer';
+import { sendConsultationEmails } from '../server/mailer';
+import type { ConsultationPayload } from '../server/mailer';
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {

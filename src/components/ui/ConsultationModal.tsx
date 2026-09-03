@@ -86,7 +86,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
             </div>
             <h3 className="font-serif text-2xl text-white mb-2">Consultation Requested</h3>
             <p className="text-white/80 text-sm max-w-sm mb-2">
-              Thank you, <strong className="text-white">{formData.fullName}</strong>. An acknowledgment email has been sent to <span className="text-[#C99A3D]">{formData.email}</span>.
+              Thank you, <strong className="text-white">{formData.fullName}</strong>. Your request has been received for <span className="text-[#C99A3D]">{formData.email}</span>.
             </p>
             <p className="text-white/60 text-xs max-w-xs mb-6">
               An AlignX executive partner will review your project brief and get in touch within 24 hours.
@@ -130,7 +130,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-white/80 mb-1">Corporate Email *</label>
+                  <label className="block text-xs font-medium text-white/80 mb-1">Email *</label>
                   <input
                     type="email"
                     required

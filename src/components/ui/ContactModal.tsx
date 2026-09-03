@@ -75,7 +75,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             </div>
             <h3 className="font-serif text-2xl text-white mb-2">Message Received</h3>
             <p className="text-white/80 text-sm max-w-sm mb-2">
-              Thank you, <strong className="text-white">{formData.name}</strong>. An acknowledgment email has been sent to <span className="text-[#C99A3D]">{formData.email}</span>.
+              Thank you, <strong className="text-white">{formData.name}</strong>. Your inquiry has been received for <span className="text-[#C99A3D]">{formData.email}</span>.
             </p>
             <p className="text-white/60 text-xs max-w-xs mb-6">
               Our Nairobi execution team has been notified and will get back to you promptly.

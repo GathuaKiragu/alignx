@@ -1,4 +1,5 @@
-import { sendContactEmails, ContactPayload } from '../server/mailer';
+import { sendContactEmails } from '../server/mailer';
+import type { ContactPayload } from '../server/mailer';
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {

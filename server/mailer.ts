@@ -10,7 +10,12 @@ export const transporter = nodemailer.createTransport({
   },
   tls: {
     rejectUnauthorized: false
-  }
+  },
+  // Keep SMTP failures inside the serverless function's execution window so
+  // callers receive a useful JSON response instead of a platform timeout.
+  connectionTimeout: 8_000,
+  greetingTimeout: 8_000,
+  socketTimeout: 15_000
 });
 
 const BRAND_GOLD = '#C99A3D';
@@ -162,14 +167,20 @@ export async function sendContactEmails(data: ContactPayload) {
     html: adminNotificationHtml
   });
 
-  // Send user acknowledgment
-  await transporter.sendMail({
-    from: '"AlignX Consulting" <info@alignx.co.ke>',
-    to: email,
-    replyTo: 'info@alignx.co.ke',
-    subject: `Thank you for contacting AlignX Consulting Limited`,
-    html: userAckHtml
-  });
+  // The internal notification is the required delivery. An acknowledgment is
+  // helpful, but a recipient-side rejection must not make a delivered inquiry
+  // appear to have failed to the visitor.
+  try {
+    await transporter.sendMail({
+      from: '"AlignX Consulting" <info@alignx.co.ke>',
+      to: email,
+      replyTo: 'info@alignx.co.ke',
+      subject: `Thank you for contacting AlignX Consulting Limited`,
+      html: userAckHtml
+    });
+  } catch (error) {
+    console.error('Contact acknowledgment email failed:', error);
+  }
 }
 
 // 2. Send Consultation Form Emails
@@ -311,12 +322,17 @@ export async function sendConsultationEmails(data: ConsultationPayload) {
     html: adminNotificationHtml
   });
 
-  // Send user acknowledgment
-  await transporter.sendMail({
-    from: '"AlignX Consulting" <info@alignx.co.ke>',
-    to: email,
-    replyTo: 'info@alignx.co.ke',
-    subject: `AlignX Consulting - Consultation Request Received`,
-    html: userAckHtml
-  });
+  // Do not fail a successfully delivered consultation request just because the
+  // visitor's mail server rejects or delays the optional acknowledgment.
+  try {
+    await transporter.sendMail({
+      from: '"AlignX Consulting" <info@alignx.co.ke>',
+      to: email,
+      replyTo: 'info@alignx.co.ke',
+      subject: `AlignX Consulting - Consultation Request Received`,
+      html: userAckHtml
+    });
+  } catch (error) {
+    console.error('Consultation acknowledgment email failed:', error);
+  }
 }
