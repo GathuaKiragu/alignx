@@ -1,4 +1,11 @@
-import nodemailer from 'nodemailer';
+import { createRequire } from 'node:module';
+import type Nodemailer from 'nodemailer';
+
+// Vercel emits this server module as ESM. Loading Nodemailer's CommonJS entry
+// through Node's native require bridge keeps its built-in module imports (for
+// example `events`, `stream`, and `crypto`) out of the ESM bundle shim.
+const require = createRequire(import.meta.url);
+const nodemailer: typeof Nodemailer = require('nodemailer');
 
 export const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || '41.80.37.8',
