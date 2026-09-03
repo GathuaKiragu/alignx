@@ -1,4 +1,3 @@
-import { sendContactEmails } from '../server/mailer';
 import type { ContactPayload } from '../server/mailer';
 
 export default async function handler(req: any, res: any) {
@@ -12,6 +11,7 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
+    const { sendContactEmails } = await import('../server/mailer');
     await sendContactEmails(data);
     return res.status(200).json({ success: true, message: 'Inquiry received and email sent successfully.' });
   } catch (error: any) {
