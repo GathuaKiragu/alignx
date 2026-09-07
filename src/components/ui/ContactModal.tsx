@@ -41,7 +41,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
       setSubmitted(true);
     } catch (err: any) {
       console.error('Contact submission error:', err);
-      // Fallback: If network fails, still mark submitted but show friendly note
       setErrorMsg(err.message || 'Error communicating with server.');
     } finally {
       setLoading(false);

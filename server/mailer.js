@@ -1,6 +1,6 @@
-import nodemailer from 'nodemailer';
+const nodemailer = require('nodemailer');
 
-export const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || '41.80.37.8',
   port: Number(process.env.SMTP_PORT) || 465,
   secure: true,
@@ -21,24 +21,8 @@ export const transporter = nodemailer.createTransport({
 const BRAND_GOLD = '#C99A3D';
 const BRAND_DARK = '#00332A';
 
-export interface ContactPayload {
-  name: string;
-  email: string;
-  subject?: string;
-  message: string;
-}
-
-export interface ConsultationPayload {
-  fullName: string;
-  email: string;
-  phone?: string;
-  company?: string;
-  service?: string;
-  message?: string;
-}
-
 // 1. Send Contact Form Emails
-export async function sendContactEmails(data: ContactPayload) {
+async function sendContactEmails(data) {
   const { name, email, subject, message } = data;
   const inquirySubject = subject || 'General Inquiry';
   const timestamp = new Date().toLocaleString('en-KE', { timeZone: 'Africa/Nairobi' });
@@ -184,7 +168,7 @@ export async function sendContactEmails(data: ContactPayload) {
 }
 
 // 2. Send Consultation Form Emails
-export async function sendConsultationEmails(data: ConsultationPayload) {
+async function sendConsultationEmails(data) {
   const { fullName, email, phone, company, service, message } = data;
   const timestamp = new Date().toLocaleString('en-KE', { timeZone: 'Africa/Nairobi' });
 
@@ -336,3 +320,5 @@ export async function sendConsultationEmails(data: ConsultationPayload) {
     console.error('Consultation acknowledgment email failed:', error);
   }
 }
+
+module.exports = { transporter, sendContactEmails, sendConsultationEmails };
