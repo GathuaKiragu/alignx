@@ -78,7 +78,7 @@ export const statsData: StatItem[] = [
     iconName: 'network'
   },
   {
-    value: '98%',
+    value: '100%',
     label: 'Client\nSatisfaction',
     iconName: 'chart'
   },
